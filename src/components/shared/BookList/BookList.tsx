@@ -10,7 +10,12 @@ export function BookList({ bookList }: BookListPropTypes): JSX.Element {
 	return (
 		<div className="BookList">
 			{bookList.map(book => (
-				<Book key={book.id} book={book} />
+				<span key={book.id}>
+					<br />
+					<Book book={book} />
+					<button>Click Me!</button>
+					<br />
+				</span>
 			))}
 		</div>
 	)
