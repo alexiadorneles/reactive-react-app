@@ -1,6 +1,6 @@
 import React from 'react'
 import { BookModel } from '../../../@types'
-import { ObservableStore } from '../../../observables/ObservableStore'
+import { useSubject } from '../../../hooks'
 import { Book } from '../../shared'
 
 export interface BookListPropTypes {
@@ -8,7 +8,7 @@ export interface BookListPropTypes {
 }
 
 export function BookList({ bookList }: BookListPropTypes): JSX.Element {
-	const selectBookObserver = ObservableStore.getSubject('CurrentReading')
+	const selectBookObserver = useSubject('CurrentReading')
 
 	return (
 		<div className="BookList">
