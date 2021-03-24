@@ -8,7 +8,7 @@ export interface BookListPropTypes {
 }
 
 export function BookList({ bookList }: BookListPropTypes): JSX.Element {
-	const selectBookObserver = useSubject('CurrentReading')
+	const changeCurrentBookSubject = useSubject('CurrentReading')
 
 	return (
 		<div className="BookList">
@@ -16,7 +16,7 @@ export function BookList({ bookList }: BookListPropTypes): JSX.Element {
 				<span key={book.id}>
 					<br />
 					<Book book={book} />
-					<button onClick={() => selectBookObserver.next(book.volumeInfo.title)}>
+					<button onClick={() => changeCurrentBookSubject.next(book.volumeInfo.title)}>
 						Selecionar leitura atual
 					</button>
 					<br />
