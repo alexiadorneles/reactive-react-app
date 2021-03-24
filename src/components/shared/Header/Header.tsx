@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useObservable } from '../../../hooks'
 
-interface HeaderPropTypes {
-	currentBook: string
-}
+export function Header(): JSX.Element {
+	const [currentBook, setCurrentBook] = useState('')
 
-export function Header({ currentBook }: HeaderPropTypes): JSX.Element {
+	useEffect(() => {
+		const subscription = useObservable('CurrentReading', setCurrentBook)
+		return () => subscription.unsubscribe()
+	}, [])
+
 	const headerStyles: React.CSSProperties = {
 		backgroundColor: 'rgba(0,0,0, .1)',
 		height: 30,
