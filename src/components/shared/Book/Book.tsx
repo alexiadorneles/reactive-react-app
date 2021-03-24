@@ -8,7 +8,7 @@ export interface BookPropTypes {
 export function Book({ book }: BookPropTypes): JSX.Element {
 	return (
 		<div className="Book">
-			{book.name} - {book.authorName}
+			{book.volumeInfo.title} - {(book.volumeInfo.authors && book.volumeInfo.authors[0]) || 'Desconhecido'}
 		</div>
 	)
 }

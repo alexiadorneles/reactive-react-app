@@ -26,6 +26,7 @@
 		"import/extensions": 0,
 		"import/no-unresolved": 0,
 		"@typescript-eslint/explicit-module-boundary-types": 2,
-		"@typescript-eslint/no-explicit-any": 2
+		"@typescript-eslint/no-explicit-any": 2,
+		"no-debugger": 1
 	}
 }
