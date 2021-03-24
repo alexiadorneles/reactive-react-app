@@ -13,7 +13,7 @@ export function BookList({ bookList }: BookListPropTypes): JSX.Element {
 				<span key={book.id}>
 					<br />
 					<Book book={book} />
-					<button>Click Me!</button>
+					<button>Selecionar leitura atual</button>
 					<br />
 				</span>
 			))}

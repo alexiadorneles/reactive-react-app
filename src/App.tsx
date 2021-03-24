@@ -1,12 +1,16 @@
 import React from 'react'
 import './App.css'
 import { Search } from './components/screens'
+import { Header } from './components/shared'
 
 function App(): JSX.Element {
 	return (
-		<div className="App">
-			<Search />
-		</div>
+		<>
+			<Header currentBook="Ilíada" />
+			<div className="App">
+				<Search />
+			</div>
+		</>
 	)
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BehaviorSubject, interval } from 'rxjs'
-import { debounce } from 'rxjs/operators'
+import { debounce, filter, map } from 'rxjs/operators'
 import { BookModel } from '../../@types'
 import { HttpService } from '../../services/HttpService'
 import { BookList, SearchBox } from '../shared'
@@ -12,11 +12,20 @@ export function Search(): JSX.Element {
 
 	const [books, setBooks] = useState<BookModel[]>([])
 
-	textUpdaterObserver.pipe(debounce(() => interval(500))).subscribe(text => {
-		googleBooksService.get(text).subscribe(response => {
-			setBooks(response.data.items)
+	textUpdaterObserver
+		.pipe(
+			debounce(() => interval(500)),
+			filter(text => Boolean(text))
+		)
+		.subscribe(text => {
+			googleBooksService
+				.get(text)
+				.pipe(
+					map(response => response.data.items),
+					map(items => items.filter((book: BookModel) => book.volumeInfo.language === 'pt'))
+				)
+				.subscribe(setBooks)
 		})
-	})
 
 	return (
 		<div className="Search">
