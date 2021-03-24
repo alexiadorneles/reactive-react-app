@@ -1,25 +1,27 @@
-import Axios from "axios-observable";
-import { AxiosObservable } from "axios-observable/dist/axios-observable.interface";
+import Axios from 'axios-observable'
+import { AxiosObservable } from 'axios-observable/dist/axios-observable.interface'
+import { PlainObject } from '../@types/PlainObject'
 
 export class HttpService {
-  http: Axios;
-  constructor(private baseURL: string) {
-    this.http = Axios.create({});
-  }
+	http: Axios
 
-  get(url: string): AxiosObservable<any> {
-    return this.http.get(`${this.baseURL}${url}`);
-  }
+	constructor(private baseURL: string) {
+		this.http = Axios.create({})
+	}
 
-  post(url: string, data: any): AxiosObservable<any> {
-    return this.http.post(`${this.baseURL}${url}`, data);
-  }
+	get(url: string): AxiosObservable<PlainObject> {
+		return this.http.get(`${this.baseURL}${url}`)
+	}
 
-  put(url: string): AxiosObservable<any> {
-    return this.http.get(`${this.baseURL}${url}`);
-  }
+	post(url: string, data: PlainObject): AxiosObservable<PlainObject> {
+		return this.http.post(`${this.baseURL}${url}`, data)
+	}
 
-  delete(url: string): AxiosObservable<any> {
-    return this.http.delete(`${this.baseURL}${url}`);
-  }
+	put(url: string): AxiosObservable<PlainObject> {
+		return this.http.get(`${this.baseURL}${url}`)
+	}
+
+	delete(url: string): AxiosObservable<PlainObject> {
+		return this.http.delete(`${this.baseURL}${url}`)
+	}
 }

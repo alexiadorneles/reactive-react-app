@@ -3,7 +3,13 @@
 		"browser": true,
 		"es2021": true
 	},
-	"extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "prettier"],
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"prettier",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"files": ["*.ts", "*.tsx"],
@@ -14,5 +20,12 @@
 		"sourceType": "module"
 	},
 	"plugins": ["react", "@typescript-eslint"],
-	"rules": {}
+	"rules": {
+		"react/jsx-filename-extension": 0,
+		"import/prefer-default-export": 0,
+		"import/extensions": 0,
+		"import/no-unresolved": 0,
+		"@typescript-eslint/explicit-module-boundary-types": 2,
+		"@typescript-eslint/no-explicit-any": 2
+	}
 }
