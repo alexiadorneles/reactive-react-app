@@ -3,7 +3,7 @@ import { BehaviorSubject, interval } from 'rxjs'
 import { debounce } from 'rxjs/operators'
 import { BookModel } from '../../@types'
 import { HttpService } from '../../services/HttpService'
-import { Book, SearchBox } from '../shared'
+import { BookList, SearchBox } from '../shared'
 
 export function Search(): JSX.Element {
 	// TODO: tá feio, eu sei
@@ -21,9 +21,7 @@ export function Search(): JSX.Element {
 	return (
 		<div className="Search">
 			<SearchBox textObserver={textUpdaterObserver} />
-			{books.map(book => (
-				<Book key={book.id} book={book} />
-			))}
+			<BookList bookList={books} />
 		</div>
 	)
 }
