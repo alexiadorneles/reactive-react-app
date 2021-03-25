@@ -15,14 +15,16 @@ export function Search(): JSX.Element {
 	textUpdaterObserver
 		.pipe(
 			debounce(() => interval(500)),
-			filter(text => Boolean(text))
+			filter(text => Boolean(text)),
 		)
 		.subscribe(text => {
 			googleBooksService
 				.get(text)
 				.pipe(
 					map(response => response.data.items),
-					map(items => items.filter((book: BookModel) => book.volumeInfo.language === 'pt'))
+					map(items =>
+						items.filter((book: BookModel) => ['en', 'pt'].includes(book.volumeInfo.language)),
+					),
 				)
 				.subscribe(setBooks)
 		})
