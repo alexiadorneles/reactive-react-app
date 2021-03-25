@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"antd": "^4.14.1",
 		"axios": "^0.21.1",
 		"axios-observable": "^1.1.6",
 		"react": "^17.0.2",
