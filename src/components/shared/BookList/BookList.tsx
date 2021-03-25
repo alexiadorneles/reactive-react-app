@@ -1,3 +1,4 @@
+import { Button } from 'antd'
 import React from 'react'
 import { BookModel } from '../../../@types'
 import { useSubject } from '../../../hooks'
@@ -11,16 +12,19 @@ export function BookList({ bookList }: BookListPropTypes): JSX.Element {
 	const changeCurrentBookSubject = useSubject('CurrentReading')
 
 	return (
-		<div className="BookList">
+		<div className="BookList" style={{ display: 'flex', flexWrap: 'wrap' }}>
 			{bookList.map(book => (
-				<span key={book.id}>
+				<div key={book.id}>
 					<br />
 					<Book book={book} />
-					<button onClick={() => changeCurrentBookSubject.next(book.volumeInfo.title)}>
-						Selecionar leitura atual
-					</button>
+					<Button
+						type="primary"
+						onClick={() => changeCurrentBookSubject.next(book.volumeInfo.title)}
+					>
+						SELECIONAR
+					</Button>
 					<br />
-				</span>
+				</div>
 			))}
 		</div>
 	)

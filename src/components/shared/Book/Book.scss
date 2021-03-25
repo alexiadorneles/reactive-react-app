@@ -1,0 +1,22 @@
+.Book {
+	width: 400px;
+	margin: auto 15px !important;
+
+	&__description {
+		font-size: 12px !important;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 14;
+		-webkit-box-orient: vertical;
+	}
+
+	&__container {
+		display: flex;
+		width: 100%;
+
+		&__large {
+			display: flex;
+			flex: 1 !important;
+		}
+	}
+}

@@ -1,3 +1,4 @@
+import { Input } from 'antd'
 import React, { ChangeEvent, useState } from 'react'
 import { Observer } from 'rxjs'
 
@@ -16,8 +17,7 @@ export function SearchBox({ textObserver }: SearchBoxPropTypes): JSX.Element {
 
 	return (
 		<div>
-			<label htmlFor="">Procure o livro:</label>
-			<input type="text" value={text} onChange={onChangeText} />
+			<Input type="text" value={text} onChange={onChangeText} placeholder="procure o livro aqui" />
 		</div>
 	)
 }
