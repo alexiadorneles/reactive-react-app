@@ -1,18 +1,16 @@
-import { Card, Divider, Image, Space } from 'antd'
-import { Typography } from 'antd'
-
+import { Card, Divider, Image, Space, Typography } from 'antd'
 import Text from 'antd/lib/typography/Text'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { BookModel } from '../../../@types'
-
 import './Book.scss'
 
 const { Title } = Typography
 export interface BookPropTypes {
 	book: BookModel
+	actionButton?: ReactNode
 }
 
-export function Book({ book }: BookPropTypes): JSX.Element {
+export function Book({ book, actionButton }: BookPropTypes): JSX.Element {
 	return (
 		<Card className="Book">
 			<Space className="Book__container" size="large">
@@ -41,6 +39,9 @@ export function Book({ book }: BookPropTypes): JSX.Element {
 						<Text type="secondary">Número de páginas: </Text>
 						<Text>{book.volumeInfo.pageCount}</Text>
 					</Space>
+				</Space>
+				<Space className="Book__container__actionButton" align="end">
+					{actionButton}
 				</Space>
 			</Space>
 		</Card>

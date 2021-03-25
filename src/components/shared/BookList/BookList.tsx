@@ -1,8 +1,9 @@
-import { Button } from 'antd'
+import { Button, Space } from 'antd'
 import React from 'react'
 import { BookModel } from '../../../@types'
 import { useSubject } from '../../../hooks'
 import { Book } from '../../shared'
+import './BookList.scss'
 
 export interface BookListPropTypes {
 	bookList: BookModel[]
@@ -11,21 +12,17 @@ export interface BookListPropTypes {
 export function BookList({ bookList }: BookListPropTypes): JSX.Element {
 	const changeCurrentBookSubject = useSubject('CurrentReading')
 
+	const createSelectionButton = (book: BookModel) => (
+		<Button type="primary" onClick={() => changeCurrentBookSubject.next(book.volumeInfo.title)}>
+			SELECIONAR
+		</Button>
+	)
+
 	return (
-		<div className="BookList" style={{ display: 'flex', flexWrap: 'wrap' }}>
+		<Space className="BookList" align="center" wrap={true}>
 			{bookList.map(book => (
-				<div key={book.id}>
-					<br />
-					<Book book={book} />
-					<Button
-						type="primary"
-						onClick={() => changeCurrentBookSubject.next(book.volumeInfo.title)}
-					>
-						SELECIONAR
-					</Button>
-					<br />
-				</div>
+				<Book key={book.id} actionButton={createSelectionButton(book)} book={book} />
 			))}
-		</div>
+		</Space>
 	)
 }
