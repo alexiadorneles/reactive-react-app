@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { BehaviorSubject, interval } from 'rxjs'
 import { debounce, filter, map } from 'rxjs/operators'
-import { BookModel } from '../../@types'
-import { HttpService } from '../../services/HttpService'
-import { BookList, SearchBox } from '../shared'
+import { BookModel } from '../../../@types'
+import { HttpService } from '../../../services/HttpService'
+import { BookList, SearchBox } from '../../shared'
+
+import './Search.scss'
 
 export function Search(): JSX.Element {
 	// TODO: tá feio, eu sei

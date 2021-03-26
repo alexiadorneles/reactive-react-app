@@ -1,6 +1,8 @@
 import { Input } from 'antd'
-import React, { ChangeEvent, useState } from 'react'
+import Search from 'antd/lib/transfer/search'
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { Observer } from 'rxjs'
+import './SearchBox.scss'
 
 export interface SearchBoxPropTypes {
 	textObserver: Observer<string>
@@ -16,8 +18,13 @@ export function SearchBox({ textObserver }: SearchBoxPropTypes): JSX.Element {
 	}
 
 	return (
-		<div>
-			<Input type="text" value={text} onChange={onChangeText} placeholder="procure o livro aqui" />
+		<div className="SearchBox">
+			<Input.Search
+				type="text"
+				value={text}
+				onChange={onChangeText}
+				placeholder="procure o livro aqui"
+			/>
 		</div>
 	)
 }
