@@ -13,6 +13,7 @@
 	&__container {
 		display: flex;
 		width: 100%;
+		justify-content: center;
 
 		&__large {
 			display: flex;
@@ -20,7 +21,8 @@
 		}
 
 		&__actionButton {
-			margin-top: 50px;
+			margin-top: 20px;
+			float: right;
 		}
 	}
 }

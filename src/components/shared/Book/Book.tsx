@@ -13,14 +13,16 @@ export interface BookPropTypes {
 export function Book({ book, actionButton }: BookPropTypes): JSX.Element {
 	return (
 		<Card className="Book">
-			<Space className="Book__container" size="large">
+			<Space className="Book__container" size="large" align="center">
 				<Image width={200} src={book.volumeInfo.imageLinks?.thumbnail} />
-				<Space direction="vertical">
-					<Space direction="vertical" align="center">
-						<Text type="secondary">Sobre: </Text>
-						<Text className="Book__description">{book.volumeInfo.description}</Text>
+				{book.volumeInfo.description && (
+					<Space direction="vertical">
+						<Space direction="vertical" align="center">
+							<Text type="secondary">Sobre: </Text>
+							<Text className="Book__description">{book.volumeInfo.description}</Text>
+						</Space>
 					</Space>
-				</Space>
+				)}
 			</Space>
 			<Divider />
 			<Title level={3}>{book.volumeInfo.title.toLocaleUpperCase()}</Title>
@@ -40,9 +42,9 @@ export function Book({ book, actionButton }: BookPropTypes): JSX.Element {
 						<Text>{book.volumeInfo.pageCount}</Text>
 					</Space>
 				</Space>
-				<Space className="Book__container__actionButton" align="end">
-					{actionButton}
-				</Space>
+			</Space>
+			<Space className="Book__container__actionButton" align="end">
+				{actionButton}
 			</Space>
 		</Card>
 	)

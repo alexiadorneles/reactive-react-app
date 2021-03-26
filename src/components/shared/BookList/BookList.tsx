@@ -13,7 +13,11 @@ export function BookList({ bookList }: BookListPropTypes): JSX.Element {
 	const changeCurrentBookSubject = useSubject('CurrentReading')
 
 	const createSelectionButton = (book: BookModel) => (
-		<Button type="primary" onClick={() => changeCurrentBookSubject.next(book.volumeInfo.title)}>
+		<Button
+			size="middle"
+			type="primary"
+			onClick={() => changeCurrentBookSubject.next(book.volumeInfo.title)}
+		>
 			SELECIONAR
 		</Button>
 	)
