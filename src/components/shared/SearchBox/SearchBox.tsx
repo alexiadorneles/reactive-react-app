@@ -1,20 +1,16 @@
 import { Input } from 'antd'
-import Search from 'antd/lib/transfer/search'
-import React, { ChangeEvent, FormEvent, useState } from 'react'
-import { Observer } from 'rxjs'
+import React, { ChangeEvent, useState } from 'react'
+import { useSubject } from '../../../hooks'
 import './SearchBox.scss'
 
-export interface SearchBoxPropTypes {
-	textObserver: Observer<string>
-}
-
-export function SearchBox({ textObserver }: SearchBoxPropTypes): JSX.Element {
+export function SearchBox(): JSX.Element {
 	const [text, setText] = useState('')
+	const textSubject = useSubject('BookTextChange')
 
 	const onChangeText = (e: ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value
 		setText(value)
-		textObserver.next(value)
+		textSubject.next(value)
 	}
 
 	return (
