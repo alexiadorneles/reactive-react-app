@@ -1,8 +1,8 @@
+import { BookModel, Mediator } from '@types'
+import { useObservable, useSubject } from 'hooks'
 import { interval, Observable } from 'rxjs'
 import { debounce, filter, map } from 'rxjs/operators'
-import { BookModel, Mediator } from '../../@types'
-import { useObservable, useSubject } from '../../hooks'
-import { HttpService } from '../../services/HttpService'
+import { HttpService } from 'services'
 
 export class BookSearchMediator implements Mediator {
 	constructor(private googleBooksService: HttpService) {}

@@ -1,5 +1,5 @@
+import { BookModel } from '@types'
 import { BehaviorSubject, Subject } from 'rxjs'
-import { BookModel } from '../@types'
 import { ReactiveStore } from './ReactiveStore'
 
 export abstract class ReactiveSingletonCreator {

@@ -1,4 +1,4 @@
-import { HttpService } from '../services'
+import { HttpService } from 'services'
 import { BookSearchMediator } from './Book/BookSearchMediator'
 
 export abstract class MediatorSingletonCreator {

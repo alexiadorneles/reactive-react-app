@@ -1,8 +1,8 @@
+import { BookModel } from '@types'
 import { Button, Space } from 'antd'
+import { useSubject } from 'hooks'
 import React from 'react'
-import { BookModel } from '../../../@types'
-import { useSubject } from '../../../hooks'
-import { Book } from '../../shared'
+import { Book } from '..'
 import './BookList.scss'
 
 export interface BookListPropTypes {

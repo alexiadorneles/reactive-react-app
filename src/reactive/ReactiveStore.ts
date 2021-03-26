@@ -1,5 +1,5 @@
+import { ReactionLevel } from '@types'
 import { Subject } from 'rxjs'
-import { ReactionLevel } from '../@types'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const observables: any = {}

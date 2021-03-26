@@ -1,7 +1,7 @@
+import { BookModel } from '@types'
 import { Card, Divider, Image, Space, Typography } from 'antd'
 import Text from 'antd/lib/typography/Text'
 import React, { ReactNode } from 'react'
-import { BookModel } from '../../../@types'
 import './Book.scss'
 
 const { Title } = Typography

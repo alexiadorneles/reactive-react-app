@@ -1,6 +1,6 @@
 import { Input } from 'antd'
+import { useSubject } from 'hooks'
 import React, { ChangeEvent, useState } from 'react'
-import { useSubject } from '../../../hooks'
 import './SearchBox.scss'
 
 export function SearchBox(): JSX.Element {

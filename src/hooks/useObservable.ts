@@ -1,7 +1,7 @@
+import { ReactionLevel } from '@types'
 import { Dispatch, SetStateAction } from 'react'
+import { ReactiveStore } from 'reactive'
 import { Observable, Subscription } from 'rxjs'
-import { ReactionLevel } from '../@types'
-import { ReactiveStore } from '../reactive'
 
 type SubscribeFunction<T> = (
 	next?: ((value: T) => void) | undefined,

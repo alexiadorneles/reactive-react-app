@@ -1,9 +1,9 @@
 import { Tabs } from 'antd'
+import { Search } from 'components/screens'
+import { Header } from 'components/shared'
+import { useObservable } from 'hooks'
 import React, { useEffect, useState } from 'react'
 import './App.css'
-import { Search } from './components/screens'
-import { Header } from './components/shared'
-import { useObservable } from './hooks'
 
 const { TabPane } = Tabs
 

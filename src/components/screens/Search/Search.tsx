@@ -1,7 +1,7 @@
+import { BookModel } from '@types'
+import { BookList, SearchBox } from 'components/shared'
+import { useObservable } from 'hooks'
 import React, { useEffect, useState } from 'react'
-import { BookModel } from '../../../@types'
-import { useObservable } from '../../../hooks'
-import { BookList, SearchBox } from '../../shared'
 import './Search.scss'
 
 export function Search(): JSX.Element {

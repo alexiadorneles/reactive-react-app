@@ -1,6 +1,6 @@
 import { PageHeader } from 'antd'
+import { useObservable } from 'hooks'
 import React, { useEffect, useState } from 'react'
-import { useObservable } from '../../../hooks'
 
 export function Header(): JSX.Element {
 	const [currentBook, setCurrentBook] = useState('')

@@ -1,6 +1,6 @@
+import { ReactionLevel } from '@types'
+import { ReactiveStore } from 'reactive'
 import { Subject } from 'rxjs'
-import { ReactionLevel } from '../@types'
-import { ReactiveStore } from '../reactive'
 
 export function useSubject<L extends keyof ReactionLevel, T extends keyof ReactionLevel[L]>(
 	level: L,

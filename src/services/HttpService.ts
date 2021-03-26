@@ -1,6 +1,6 @@
+import { PlainObject } from '@types'
 import Axios from 'axios-observable'
 import { AxiosObservable } from 'axios-observable/dist/axios-observable.interface'
-import { PlainObject } from '../@types'
 
 export class HttpService {
 	http: Axios

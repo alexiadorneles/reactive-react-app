@@ -1,10 +1,10 @@
 import 'antd/dist/antd.css'
+import { MediatorSingletonCreator } from 'mediators'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { ReactiveSingletonCreator } from 'reactive'
 import App from './App'
 import './index.css'
-import { MediatorSingletonCreator } from './mediators'
-import { ReactiveSingletonCreator } from './reactive'
 import reportWebVitals from './reportWebVitals'
 
 ReactiveSingletonCreator.mountInstances()
