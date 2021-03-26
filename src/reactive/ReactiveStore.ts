@@ -1,28 +1,40 @@
-import { Observable, Subject } from 'rxjs'
-import { ReactiveKeyToData } from '../@types'
+import { Subject } from 'rxjs'
+import { ReactionLevel } from '../@types'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const observables: any = {}
 
-export abstract class ReactiveStore {
-	public static save<T extends keyof ReactiveKeyToData, R extends Subject<ReactiveKeyToData[T]>>(
-		name: T,
-		observable: R,
-	): void {
-		observables[name] = observable
+export class ReactiveStore<L extends keyof ReactionLevel> {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	private static _instance: ReactiveStore<any>
+
+	public static instance<L extends keyof ReactionLevel>(): ReactiveStore<L> {
+		return this._instance || (this._instance = new this())
 	}
 
-	public static getObservable<
-		T extends keyof ReactiveKeyToData,
-		R extends Observable<ReactiveKeyToData[T]>
-	>(name: T): R {
+	// level here is needed to reinforce type K in return
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public onLevel<K extends keyof ReactionLevel>(level: K): ReactiveStore<K> {
+		return this as ReactiveStore<K>
+	}
+
+	public save<T extends keyof ReactionLevel[L], R extends Subject<ReactionLevel[L][T]>>(
+		name: T,
+		observable: R,
+	): ReactiveStore<L> {
+		observables[name] = observable
+		return this
+	}
+
+	public getObservable<T extends keyof ReactionLevel[L], R extends Subject<ReactionLevel[L][T]>>(
+		name: T,
+	): R {
 		return observables[name].asObservable() as R
 	}
 
-	public static getSubject<
-		T extends keyof ReactiveKeyToData,
-		R extends Subject<ReactiveKeyToData[T]>
-	>(name: T): R {
+	public getSubject<T extends keyof ReactionLevel[L], R extends Subject<ReactionLevel[L][T]>>(
+		name: T,
+	): R {
 		return observables[name] as R
 	}
 }

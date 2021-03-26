@@ -10,8 +10,8 @@ export interface BookListPropTypes {
 }
 
 export function BookList({ bookList }: BookListPropTypes): JSX.Element {
-	const changeCurrentBookSubject = useSubject('CurrentReading')
-	const updateTabSubject = useSubject('TabChange')
+	const changeCurrentBookSubject = useSubject('Book', 'CurrentReading')
+	const updateTabSubject = useSubject('Tab', 'TabChange')
 
 	const onBookChange = (book: BookModel): void => {
 		changeCurrentBookSubject.next(book.volumeInfo.title)

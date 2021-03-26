@@ -5,7 +5,7 @@ import './SearchBox.scss'
 
 export function SearchBox(): JSX.Element {
 	const [text, setText] = useState('')
-	const textSubject = useSubject('BookTextChange')
+	const textSubject = useSubject('Book', 'BookTextChange')
 
 	const onChangeText = (e: ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value

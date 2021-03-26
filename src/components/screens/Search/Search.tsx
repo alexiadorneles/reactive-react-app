@@ -8,7 +8,7 @@ export function Search(): JSX.Element {
 	const [books, setBooks] = useState<BookModel[]>([])
 
 	useEffect(() => {
-		const [_, onBooksResponse] = useObservable('BookSearchResponse')
+		const [_, onBooksResponse] = useObservable('Book', 'BookSearchResponse')
 		const subscription = onBooksResponse(setBooks)
 
 		return () => {

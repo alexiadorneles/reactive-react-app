@@ -1,10 +1,10 @@
 import { Subject } from 'rxjs'
-import { ReactiveKeyToData } from '../@types'
+import { ReactionLevel } from '../@types'
 import { ReactiveStore } from '../reactive'
 
-export function useSubject<
-	T extends keyof ReactiveKeyToData,
-	R extends Subject<ReactiveKeyToData[T]>
->(observableName: T): R {
-	return ReactiveStore.getSubject(observableName)
+export function useSubject<L extends keyof ReactionLevel, T extends keyof ReactionLevel[L]>(
+	level: L,
+	observableName: T,
+): Subject<ReactionLevel[L][T]> {
+	return ReactiveStore.instance().onLevel(level).getSubject(observableName)
 }

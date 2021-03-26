@@ -13,7 +13,7 @@ export class BookSearchMediator implements Mediator {
 	}
 
 	private debounceUserInputAndExtractWord = (): Observable<string> => {
-		const [observable] = useObservable('BookTextChange')
+		const [observable] = useObservable('Book', 'BookTextChange')
 		return observable.pipe(
 			debounce(() => interval(500)),
 			filter(text => Boolean(text)),
@@ -21,7 +21,7 @@ export class BookSearchMediator implements Mediator {
 	}
 
 	private searchBooks = (text: string): void => {
-		const subject = useSubject('BookSearchResponse')
+		const subject = useSubject('Book', 'BookSearchResponse')
 		const booksObservable = this.googleBooksService.get(text).pipe(
 			map(response => response.data.items),
 			map(this.filterEnglishAndPortugueseBooks),

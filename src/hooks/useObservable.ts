@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 import { Observable, Subscription } from 'rxjs'
-import { ReactiveKeys, ReactiveKeyToData } from '../@types'
+import { ReactionLevel } from '../@types'
 import { ReactiveStore } from '../reactive'
 
 type SubscribeFunction<T> = (
@@ -9,27 +9,28 @@ type SubscribeFunction<T> = (
 	complete?: (() => void) | undefined,
 ) => Subscription
 
-export function useObservable<T extends keyof ReactiveKeyToData, R extends ReactiveKeyToData[T]>(
-	observableName: T,
-	dispatcher: Dispatch<SetStateAction<R>>,
-): Subscription
+export function useObservable<
+	L extends keyof ReactionLevel,
+	T extends keyof ReactionLevel[L],
+	R extends ReactionLevel[L][T]
+>(level: L, observableName: T, dispatcher: Dispatch<SetStateAction<R>>): Subscription
 
-export function useObservable<T extends keyof ReactiveKeyToData, R extends ReactiveKeyToData[T]>(
-	observableName: T,
-): [Observable<R>, SubscribeFunction<R>]
+export function useObservable<
+	L extends keyof ReactionLevel,
+	T extends keyof ReactionLevel[L],
+	R extends ReactionLevel[L][T]
+>(level: L, observableName: T): [Observable<R>, SubscribeFunction<R>]
 
-export function useObservable<T extends keyof ReactiveKeyToData, R extends ReactiveKeyToData[T]>(
-	observableName: ReactiveKeys,
-	dispatcher?: Dispatch<SetStateAction<R>>,
-): Subscription | [Observable<R>, SubscribeFunction<R>] {
-	const observable = ReactiveStore.getObservable(observableName)
+export function useObservable<L extends keyof ReactionLevel, T extends keyof ReactionLevel[L]>(
+	level: L,
+	observableName: T,
+	dispatcher?: Dispatch<SetStateAction<ReactionLevel[L][T]>>,
+): Subscription | [Observable<ReactionLevel[L][T]>, SubscribeFunction<ReactionLevel[L][T]>] {
+	const observable = ReactiveStore.instance().onLevel(level).getObservable(observableName)
 
 	if (dispatcher) {
-		return observable.subscribe(value => dispatcher(value as R))
+		return observable.subscribe(value => dispatcher(value))
 	}
 
-	return [observable, observable.subscribe.bind(observable)] as [
-		Observable<R>,
-		SubscribeFunction<R>,
-	]
+	return [observable, observable.subscribe.bind(observable)]
 }

@@ -12,7 +12,7 @@ function App(): JSX.Element {
 	const [tabDescription, setTabDescription] = useState('Tab 2')
 
 	useEffect(() => {
-		const [_, onTabChange] = useObservable('TabChange')
+		const [_, onTabChange] = useObservable('Tab', 'TabChange')
 		const subscription = onTabChange(({ tabKey, bookName }) => {
 			setKey(tabKey)
 			setTabDescription(bookName)

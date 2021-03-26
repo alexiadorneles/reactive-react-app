@@ -6,7 +6,7 @@ export function Header(): JSX.Element {
 	const [currentBook, setCurrentBook] = useState('')
 
 	useEffect(() => {
-		const subscription = useObservable('CurrentReading', setCurrentBook)
+		const subscription = useObservable('Book', 'CurrentReading', setCurrentBook)
 		return () => subscription.unsubscribe()
 	}, [])
 
