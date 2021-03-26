@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
-import { Subscription } from 'rxjs'
-import { ReactiveData, ReactiveKeys, ReactiveKeyToData } from '../@types/Observables'
+import { Observable, Subscription } from 'rxjs'
+import { ReactiveKeys, ReactiveKeyToData } from '../@types/Observables'
 import { ObservableStore } from '../observables/ObservableStore'
 
 type SubscribeFunction<T> = (
@@ -16,17 +16,20 @@ export function useObservable<T extends keyof ReactiveKeyToData, R extends React
 
 export function useObservable<T extends keyof ReactiveKeyToData, R extends ReactiveKeyToData[T]>(
 	observableName: T,
-): SubscribeFunction<R>
+): [Observable<R>, SubscribeFunction<R>]
 
-export function useObservable<T extends ReactiveData>(
+export function useObservable<T extends keyof ReactiveKeyToData, R extends ReactiveKeyToData[T]>(
 	observableName: ReactiveKeys,
-	dispatcher?: Dispatch<SetStateAction<T>>,
-): Subscription | SubscribeFunction<T> {
+	dispatcher?: Dispatch<SetStateAction<R>>,
+): Subscription | [Observable<R>, SubscribeFunction<R>] {
 	const observable = ObservableStore.getObservable(observableName)
 
 	if (dispatcher) {
-		return observable.subscribe(value => dispatcher(value as T))
+		return observable.subscribe(value => dispatcher(value as R))
 	}
 
-	return observable.subscribe as SubscribeFunction<T>
+	return [observable, observable.subscribe.bind(observable)] as [
+		Observable<R>,
+		SubscribeFunction<R>,
+	]
 }
