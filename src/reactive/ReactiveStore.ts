@@ -1,5 +1,5 @@
 import { Observable, Subject } from 'rxjs'
-import { ReactiveKeyToData } from '../@types/Observables'
+import { ReactiveKeyToData } from '../@types'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const observables: any = {}

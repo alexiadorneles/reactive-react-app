@@ -1,6 +1,6 @@
 import { Subject } from 'rxjs'
-import { ReactiveKeyToData } from '../@types/Observables'
-import { ReactiveStore } from '../reactive/ReactiveStore'
+import { ReactiveKeyToData } from '../@types'
+import { ReactiveStore } from '../reactive'
 
 export function useSubject<
 	T extends keyof ReactiveKeyToData,

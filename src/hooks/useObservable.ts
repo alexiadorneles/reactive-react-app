@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import { Observable, Subscription } from 'rxjs'
-import { ReactiveKeys, ReactiveKeyToData } from '../@types/Observables'
-import { ReactiveStore } from '../reactive/ReactiveStore'
+import { ReactiveKeys, ReactiveKeyToData } from '../@types'
+import { ReactiveStore } from '../reactive'
 
 type SubscribeFunction<T> = (
 	next?: ((value: T) => void) | undefined,

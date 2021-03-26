@@ -1,9 +1,14 @@
+import 'antd/dist/antd.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import './index.css'
+import { MediatorSingletonCreator } from './mediators'
+import { ReactiveSingletonCreator } from './reactive'
 import reportWebVitals from './reportWebVitals'
-import 'antd/dist/antd.css'
+
+ReactiveSingletonCreator.mountInstances()
+MediatorSingletonCreator.mountInstances()
 
 ReactDOM.render(
 	<React.StrictMode>
