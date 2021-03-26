@@ -3,10 +3,10 @@ import './App.css'
 import { Search } from './components/screens'
 import { Header } from './components/shared'
 import { MediatorSingletonCreator } from './mediators'
-import { ObservableController } from './observables'
+import { ReactiveSingletonCreator } from './reactive'
 
 function App(): JSX.Element {
-	ObservableController.setup()
+	ReactiveSingletonCreator.mountInstances()
 	MediatorSingletonCreator.mountInstances()
 
 	return (

@@ -4,7 +4,7 @@ import { ReactiveKeyToData } from '../@types/Observables'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const observables: any = {}
 
-export abstract class ObservableStore {
+export abstract class ReactiveStore {
 	public static save<T extends keyof ReactiveKeyToData, R extends Subject<ReactiveKeyToData[T]>>(
 		name: T,
 		observable: R,
