@@ -5,6 +5,7 @@ export interface ReactiveKeyToData {
 	CurrentReading: string
 	BookTextChange: string
 	BookSearchResponse: BookModel[]
+	TabChange: { tabKey: string; bookName: string }
 }
 
 export type ReactiveKeys = keyof ReactiveKeyToData

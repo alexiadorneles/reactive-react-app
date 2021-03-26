@@ -11,13 +11,15 @@ export interface BookListPropTypes {
 
 export function BookList({ bookList }: BookListPropTypes): JSX.Element {
 	const changeCurrentBookSubject = useSubject('CurrentReading')
+	const updateTabSubject = useSubject('TabChange')
+
+	const onBookChange = (book: BookModel): void => {
+		changeCurrentBookSubject.next(book.volumeInfo.title)
+		updateTabSubject.next({ tabKey: '2', bookName: book.volumeInfo.title })
+	}
 
 	const createSelectionButton = (book: BookModel) => (
-		<Button
-			size="middle"
-			type="primary"
-			onClick={() => changeCurrentBookSubject.next(book.volumeInfo.title)}
-		>
+		<Button size="middle" type="primary" onClick={onBookChange.bind(null, book)}>
 			SELECIONAR
 		</Button>
 	)
